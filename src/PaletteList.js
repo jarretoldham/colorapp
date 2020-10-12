@@ -13,7 +13,7 @@ const styles = {
   container: {
     width: "50%", 
     display: "flex", 
-    flexDirection: "flex-start", 
+    alignItems: "flex-start", 
     flexDirection: "column", 
     flexWrap: "wrap", 
   }, 
