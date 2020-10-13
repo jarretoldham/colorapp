@@ -18,6 +18,14 @@ export default {
     width: "100%", 
     justifyContent: "space-between", 
     color: "white", 
+    alignItems: "center", 
+    "& a": {
+      color: "white", 
+      textDecoration: "none", 
+      border: "1px solid white", 
+      borderRadius: "5px", 
+      padding: "0.5rem", 
+    }
   }, 
   pallettes: {
     boxSizing: "border-box", 
