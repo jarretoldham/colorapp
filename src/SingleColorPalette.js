@@ -41,7 +41,6 @@ class SingleColorPalette extends Component {
     return (
       <div className='SingleColorPalette Palette'>
         <Navbar handleChange={this.changeFormat} displayLevelSlider={false}/> 
-        <h1>Single Color Palette</h1>
         <div className='Palette-colors'>
           {colorBoxes}
           <div className="go-back ColorBox">
