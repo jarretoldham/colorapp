@@ -75,13 +75,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewPaletteForm() {
+export default function NewPaletteForm(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [currentColor, setCurrentColor] = React.useState('teal'); 
   const [currentColorName, setCurrentColorName] = React.useState(''); 
   const [colors, setColors] = React.useState([]); 
+  const [newPaletteName, setNewPaletteName] = React.useState(''); 
 
   React.useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
@@ -96,6 +97,12 @@ export default function NewPaletteForm() {
         ({ color }) => color.toLowerCase() !== currentColor
       ); 
     });
+    ValidatorForm.addValidationRule('paletteNameUnique', (value) => {
+      if (props.palettes.length === 0) return true; 
+      return props.palettes.every(
+        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+      ); 
+    });
   }); 
 
   const handleDrawerOpen = () => {
@@ -108,22 +115,40 @@ export default function NewPaletteForm() {
 
   const handleColorChange = (newColor) => {
     setCurrentColor(newColor.hex); 
-  }
+  }; 
 
   const handleColorNameChange = (evt) => {
     setCurrentColorName(evt.target.value); 
+  }; 
+
+  const handlePaletteNameChange = (evt) => {
+    setNewPaletteName(evt.target.value); 
   }
 
   const addNewColor = () => {
     const newColor = { color: currentColor, name: currentColorName}
     setColors([...colors, newColor]); 
     setCurrentColorName(''); 
+  }; 
+
+  const handleSavePalette = () => {
+    let paletteName = newPaletteName; 
+    const newPalette = {
+      paletteName: paletteName,
+      id: paletteName.toLowerCase().replace(/ /g, '-'),   
+      colors: colors, 
+    }; 
+    props.savePalette(newPalette); 
+    
+    //redirect back to the home page 
+    props.history.push('/'); 
   }
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+        color="default"
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
@@ -142,6 +167,22 @@ export default function NewPaletteForm() {
           <Typography variant="h6" noWrap>
             New Palette
           </Typography>
+          <ValidatorForm onSubmit={handleSavePalette}>
+            <TextValidator 
+              label='Palette Name'
+              value={newPaletteName}
+              onChange={handlePaletteNameChange}
+              validators={['required', 'paletteNameUnique']}
+              errorMessages={['Enter palette name', 'Palette name already used']}
+            /> 
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Save Palette
+            </Button>
+          </ValidatorForm>
         </Toolbar>
       </AppBar>
       <Drawer
