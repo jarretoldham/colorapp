@@ -81,7 +81,7 @@ export default function NewPaletteForm(props) {
   const [open, setOpen] = React.useState(true);
   const [currentColor, setCurrentColor] = React.useState('teal'); 
   const [currentColorName, setCurrentColorName] = React.useState(''); 
-  const [colors, setColors] = React.useState([]); 
+  const [colors, setColors] = React.useState([{color: "blue", name: "Blue" }]); 
   const [newPaletteName, setNewPaletteName] = React.useState(''); 
 
   React.useEffect(() => {
