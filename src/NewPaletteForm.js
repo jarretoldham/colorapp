@@ -1,7 +1,7 @@
 import React from 'react'; 
 import DraggableColorBox from './DraggableColorBox'; 
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -77,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NewPaletteForm(props) {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [currentColor, setCurrentColor] = React.useState('teal'); 
   const [currentColorName, setCurrentColorName] = React.useState(''); 
@@ -142,6 +141,12 @@ export default function NewPaletteForm(props) {
     
     //redirect back to the home page 
     props.history.push('/'); 
+  }
+
+  const removeColor = (colorName) => { 
+    setColors(
+      colors.filter(color => color.name !== colorName)
+    ); 
   }
 
   return (
@@ -243,7 +248,12 @@ export default function NewPaletteForm(props) {
       >
         <div className={classes.drawerHeader} />
         {colors.map(color => (
-          <DraggableColorBox color={color.color} name={color.name}/>
+          <DraggableColorBox 
+            key={color.name}
+            color={color.color} 
+            name={color.name}
+            handleClick={removeColor}
+          />
         ))}
       </main>
     </div>
