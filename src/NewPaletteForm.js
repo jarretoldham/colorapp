@@ -98,8 +98,8 @@ export default function NewPaletteForm() {
     setCurrentColor(newColor.hex); 
   }
 
-  const addNewColor = (newColor) => {
-    setColors([...colors, newColor]); 
+  const addNewColor = () => {
+    setColors([...colors, currentColor]); 
   }
 
   return (
@@ -156,7 +156,7 @@ export default function NewPaletteForm() {
           variant="contained" 
           color="primary"
           style={{backgroundColor: currentColor}}
-          onClick={() => addNewColor(currentColor)}
+          onClick={addNewColor}
         >
           Add Color
         </Button>
