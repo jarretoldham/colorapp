@@ -1,6 +1,6 @@
 const styles = { 
   root: { 
-    backgroundColor: "white", 
+    backgroundColor: "rgb(240, 240, 240, 0.87)", 
     border: "1px solid black", 
     borderRadius: "5px",
     padding: "0.5rem", 

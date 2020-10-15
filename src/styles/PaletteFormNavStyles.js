@@ -1,5 +1,6 @@
 import { DRAWER_WIDTH } from '../constants'; 
 import { makeStyles } from '@material-ui/core/styles';
+import sizes from './sizes'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,9 +32,15 @@ const useStyles = makeStyles((theme) => ({
     '& a': {
       textDecoration: 'none', 
     }, 
+    [sizes.down('xs')]: {
+      marginRight: '0.5rem', 
+    }, 
   }, 
   button: {
     margin: '0 0.5rem', 
+    [sizes.down('xs')]: {
+      margin: '0', 
+    },
   }, 
   hide: {
     display: 'none',
