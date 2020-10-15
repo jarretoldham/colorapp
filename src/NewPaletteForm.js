@@ -110,13 +110,8 @@ export default function NewPaletteForm(props) {
     ); 
   }
 
-  const handleSavePalette = (newPaletteName) => {
-    let paletteName = newPaletteName; 
-    const newPalette = {
-      paletteName: paletteName,
-      id: paletteName.toLowerCase().replace(/ /g, '-'),   
-      colors: colors, 
-    }; 
+  const handleSavePalette = (newPalette) => {
+    newPalette.colors = colors; 
     props.savePalette(newPalette); 
     
     //redirect back to the home page 
