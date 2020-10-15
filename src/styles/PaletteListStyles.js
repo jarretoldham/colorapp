@@ -33,7 +33,7 @@ export default {
   }, 
   nav: {
     display: "flex", 
-    width: "100%", 
+    width: "95%", 
     justifyContent: "space-between", 
     color: "black", 
     alignItems: "center", 
@@ -50,7 +50,7 @@ export default {
       transform: "scale(1.01)", 
     }
   }, 
-  pallettes: {
+  palettes: {
     boxSizing: "border-box", 
     width: "100%", 
     display: "grid", 
@@ -64,4 +64,13 @@ export default {
       gridGap: "1rem", 
     }, 
   },
+  "@global": {
+    ".fade-exit": {
+      opacity: '1', 
+    }, 
+    ".fade-exit-active": {
+      opacity: '0', 
+      transition: 'opacity 300ms ease-out', 
+    }, 
+  }, 
 }; 
