@@ -36,9 +36,17 @@ export default function NewPaletteForm(props) {
 
   const addRandomColor = () => {
     //pick a random color from existing palettes 
+    let randomColor = ''; 
     const allColors = seedColors.map(p => p.colors).flat(); 
-    const rand = Math.floor(Math.random() * allColors.length); 
-    const randomColor = allColors[rand]; 
+
+    //continue to pick a random color until we find one not already
+    //added to the palette
+    do {
+      const rand = Math.floor(Math.random() * allColors.length); 
+      randomColor = allColors[rand]; 
+    } while(colors.includes(randomColor))
+
+    //once we find a unique color, add to the palette
     setColors([...colors, randomColor]); 
   }
 
