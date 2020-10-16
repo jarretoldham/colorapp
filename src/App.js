@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css'; 
 import { generatePalette } from './colorHelpers';
 import Page from './Page';
 import Palette from './Palette'; 
