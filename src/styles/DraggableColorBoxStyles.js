@@ -1,4 +1,9 @@
+import chroma from 'chroma-js'; 
 import sizes from './sizes'; 
+import { 
+  DARK_COLOR_BOX_TEXT_COLOR as darkTextColor, 
+  LIGHT_COLOR_BOX_TEXT_COLOR as lightTextColor, 
+} from '../constants'; 
 
 const styles = {
   root: {
@@ -32,7 +37,7 @@ const styles = {
     width: "100%", 
     left: "0px", 
     bottom: "0px", 
-    color: "rgba(0, 0, 0, 0.7)", 
+    color: props => chroma(props.color).luminance() <= 0.06 ? lightTextColor : darkTextColor, 
     letterSpacing: "1px", 
     textTransform: "uppercase", 
     fontSize: "12px",

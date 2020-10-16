@@ -10,12 +10,13 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';import Button from '@material-ui/core/Button'; 
 import { arrayMove } from 'react-sortable-hoc';
 import useStyles from './styles/NewPaletteFormStyles'; 
+import seedColors from './seedColors'; 
 
 export default function NewPaletteForm(props) {
   const maxColors = props.maxColors ?? 20; 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [colors, setColors] = React.useState(props.palettes[0].colors); 
+  const [colors, setColors] = React.useState(seedColors[0].colors); 
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -35,7 +36,7 @@ export default function NewPaletteForm(props) {
 
   const addRandomColor = () => {
     //pick a random color from existing palettes 
-    const allColors = props.palettes.map(p => p.colors).flat(); 
+    const allColors = seedColors.map(p => p.colors).flat(); 
     const rand = Math.floor(Math.random() * allColors.length); 
     const randomColor = allColors[rand]; 
     setColors([...colors, randomColor]); 

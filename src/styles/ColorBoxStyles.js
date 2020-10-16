@@ -1,8 +1,10 @@
 import chroma from 'chroma-js'; 
 import sizes from './sizes'; 
+import { 
+  DARK_COLOR_BOX_TEXT_COLOR as darkTextColor, 
+  LIGHT_COLOR_BOX_TEXT_COLOR as lightTextColor, 
+} from '../constants'; 
 
-const darkTextColor = 'rgba(0, 0, 0, 0.6)'; 
-const lightTextColor = 'white'; 
 const styles = {
   colorBox: { 
     width: "20%", 
