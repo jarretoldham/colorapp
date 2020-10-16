@@ -38,6 +38,8 @@ export default function PaletteMetaForm(props) {
       emoji: emoji.native, 
     }; 
 
+    setStage(''); 
+
     handleSubmit(newPalette); 
   }
 
