@@ -5,7 +5,7 @@ import { SortableElement } from 'react-sortable-hoc';
 import styles from './styles/DraggableColorBoxStyles.js'; 
 
 const DraggableColorBox = SortableElement((props) => {
-  const { classes, handleClick, name } = props; 
+  const { classes, handleClick, name, color } = props; 
 
   const handleDelete = () => {
     handleClick(name); 
@@ -14,7 +14,7 @@ const DraggableColorBox = SortableElement((props) => {
   return (
     <div 
       className={classes.root}
-      style={{backgroundColor: props.color}}
+      style={{backgroundColor: color}}
     >
       <div className={classes.boxContent}>
         <span>{props.name}</span>

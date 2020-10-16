@@ -18,8 +18,12 @@ function MiniPalette(props) {
     openDeleteDialog(id); 
   }
 
+  const handleClick = () => {
+    props.gotToPalette(id); 
+  }
+
   return (
-    <div className={classes.root} onClick={props.handleClick}>
+    <div className={classes.root} onClick={handleClick}>
       <DeleteIcon 
         className={classes.deleteIcon}
         onClick={handleDeletePalette} 
